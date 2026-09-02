@@ -73,23 +73,36 @@
 <body>
   <header>
     <h1>Ruchika Sanghi</h1>
-    <p class="tagline">Student, Programmer, Designer.</p>
+    <p class="tagline">Student, Programmer, Writer.</p>
   </header>
 
   <main>
-    <section>
+     <div class="tabs">
+      <button class="tab is-active" data-tab="about">About</button>
+      <button class="tab" data-tab="cg">Computer Graphics</button>
+      <button class="tab" data-tab="writing">Writing</button>
+    </div>
+
+    <section id="about" class="panel is-active">
       <h2>About</h2>
       <p>
         Hey! I'm Ruchika, a computer science student at UT Austin with a passion for computer graphics and writing.
       </p>
     </section>
 
+    <section id="cg" class="panel">
+      <p>
+        computer graphics tab test
+      </p>
+    </section>
+
     <section>
       <h2>My projects</h2>
       <ul>
-        <li><a href="https://www.instagram.com/myhomegrownapp/">HomeGrown</a> — A community-powered marketplace where home gardeners and small-scale farmers can sell directly to neighbors, reducing waste and strengthening local food systems.</li>
+        <!-- <li><a href="https://www.instagram.com/myhomegrownapp/">HomeGrown</a> — A community-powered marketplace where home gardeners and small-scale farmers can sell directly to neighbors, reducing waste and strengthening local food systems.</li> -->
         <li><a href="https://github.com/harinik961/ShadyShaders-ImgToWatercolor.git">Watercolor Shader</a> — As the user presses the mouse, a water drop spread across the image, blurring it to give it a watercolor effect.</li>
-        <li><a href="https://github.com/rsanghi2/acceleration_structures.git">RayTracer</a> — A RayTracer with reflection and refraction calculations, the Phong illumination model, and antialiasing.</li>
+        <li><a href="https://github.com/rsanghi2/acceleration_structures.git">Ray Tracer</a> — A Ray Tracer with reflection and refraction calculations, the Phong illumination model, texture mapping, and antialiasing.</li>
+        <li><a href="https://github.com/harinik961/Project-5-Keyframing-and-Animation-FINAL.git">Animation, Keyframing, and Interactivity</a> - A real-time WebGL skinning engine with interactive ray-casting bone selection, GPU-based linear blend skinning, and keyframe playback with quaternion SLERP interpolation.</li>
       </ul>
     </section>
 
