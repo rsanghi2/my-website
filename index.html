@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +66,7 @@
       list-style: none;
     }
 
-    li + li {
+    li+li {
       margin-top: 8px;
     }
 
@@ -84,7 +85,7 @@
     }
 
     .tab.is-active {
-      text-decoration: underline;
+      text-decoration: italic;
     }
 
     .panel {
@@ -94,9 +95,63 @@
     .panel.is-active {
       display: block;
     }
+
+    .side-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 220px;
+      padding: 80px 24px 24px;
+      background: #efeae3;
+      transform: translateX(calc(-100% + 18px));
+      transition: transform 0.25s ease;
+      z-index: 10;
+    }
+
+    .side-panel:hover {
+      transform: translateX(0);
+    }
+
+    .side-panel-label {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      position: absolute;
+      top: 80px;
+      right: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8a8278;
+    }
+
+    .side-panel:hover .side-panel-label {
+      display: none;
+    }
+
+    .side-panel nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .side-panel a {
+      text-decoration: none;
+    }
   </style>
 </head>
+
 <body>
+
+  <aside class="side-panel">
+    <p class="side-panel-label">menu</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#cg">Computer Graphics</a>
+      <a href="#writing">Writing</a>
+    </nav>
+  </aside>
+
   <header>
     <h1>Ruchika Sanghi</h1>
     <p class="tagline">Student, Programmer, Writer.</p>
@@ -120,12 +175,16 @@
       <h2>Computer Graphics Projects</h2>
       <ul>
         <!-- <li><a href="https://www.instagram.com/myhomegrownapp/">HomeGrown</a> — A community-powered marketplace where home gardeners and small-scale farmers can sell directly to neighbors, reducing waste and strengthening local food systems.</li> -->
-        <li><a href="https://github.com/harinik961/ShadyShaders-ImgToWatercolor.git">Watercolor Shader</a> — As the user presses the mouse, a water drop spread across the image, blurring it to give it a watercolor effect.</li>
-        <li><a href="https://github.com/rsanghi2/acceleration_structures.git">Ray Tracer</a> — A Ray Tracer with reflection and refraction calculations, the Phong illumination model, texture mapping, and antialiasing.</li>
-        <li><a href="https://github.com/harinik961/Project-5-Keyframing-and-Animation-FINAL.git">Animation, Keyframing, and Interactivity</a> - A real-time WebGL skinning engine with interactive ray-casting bone selection, GPU-based linear blend skinning, and keyframe playback with quaternion SLERP interpolation.</li>
+        <li><a href="https://github.com/harinik961/ShadyShaders-ImgToWatercolor.git">Watercolor Shader</a> — As the user
+          presses the mouse, a water drop spread across the image, blurring it to give it a watercolor effect.</li>
+        <li><a href="https://github.com/rsanghi2/acceleration_structures.git">Ray Tracer</a> — A Ray Tracer with
+          reflection and refraction calculations, the Phong illumination model, texture mapping, and antialiasing.</li>
+        <li><a href="https://github.com/harinik961/Project-5-Keyframing-and-Animation-FINAL.git">Animation, Keyframing,
+            and Interactivity</a> - A real-time WebGL skinning engine with interactive ray-casting bone selection,
+          GPU-based linear blend skinning, and keyframe playback with quaternion SLERP interpolation.</li>
       </ul>
     </section>
-<!--
+    <!--
     <section id="writing" class="panel">
       <h2>Writing</h2>
       <p>
@@ -148,4 +207,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
