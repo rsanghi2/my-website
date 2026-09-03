@@ -13,10 +13,12 @@
 
     body {
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       font-family: Georgia, "Times New Roman", serif;
       background: #f8eeeb;
       color: #2b1404;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     header {
@@ -28,61 +30,50 @@
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: 500;
     }
 
     .tagline {
-      margin-top: 4px;
-      font-size: 1rem;
+      margin-top: 6px;
+      font-size: 1.4rem;
     }
 
     .menu {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      gap: 48px;
+      padding: calc(50vh - 288px) 40px 48px;
     }
 
     .item {
-      pointer-events: auto;
-      position: absolute;
-      right: 40px;
-      width: 70px;
-      height: 70px;
-      border-radius: 999px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
       background: #2b1404;
       overflow: hidden;
-      cursor: default;
-      transition: width 0.45s ease, background 0.35s ease, height 0.35s ease;
-    }
-
-    .item:nth-child(1) {
-      top: calc(50% - 140px);
-    }
-
-    .item:nth-child(2) {
-      top: calc(50% - 35px);
-    }
-
-    .item:nth-child(3) {
-      top: calc(50% + 70px);
+      transition: width 0.45s ease, height 0.45s ease, background 0.35s ease, border-radius 0.35s ease;
     }
 
     .item:hover {
       width: calc(100vw - 80px);
       height: auto;
-      min-height: 70px;
-      max-height: 280px;
-      background: #d2b48c;
-      z-index: 3;
+      min-height: 160px;
+      border-radius: 12px;
+      background: #401C00;
     }
 
     .item-body {
       width: calc(100vw - 80px);
-      padding: 18px 36px;
+      padding: 28px 40px;
       opacity: 0;
       visibility: hidden;
-      color: #2b1404;
+      color: #fff;
+      text-align: right;
+      font-size: 1.25rem;
       transition: opacity 0.2s ease, visibility 0.2s ease;
     }
 
@@ -93,15 +84,15 @@
     }
 
     .item h2 {
-      font-size: 0.85rem;
+      font-size: 1.35rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .item p,
     .item li {
-      max-width: 70ch;
+      margin-left: auto;
     }
 
     .item ul {
@@ -109,23 +100,28 @@
     }
 
     .item li + li {
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .item a {
-      color: #2b1404;
+      color: #fff;
     }
 
     .contact {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      padding: 28px 48px;
-      z-index: 4;
+      padding: 28px 48px 36px;
+      width: fit-content;
+    }
+
+    .contact h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 10px;
     }
 
     .contact p {
-      font-size: 1rem;
+      border-top: 1px solid #2b1404;
+      padding-top: 10px;
+      font-size: 1.2rem;
     }
 
     .contact a {
@@ -171,9 +167,8 @@
   </nav>
 
   <footer class="contact">
+    <h2>contact</h2>
     <p>
-      contact
-      ·
       <a>sanghiruchika@gmail.com</a>
       ·
       <a href="https://github.com/rsanghi2">GitHub</a>
