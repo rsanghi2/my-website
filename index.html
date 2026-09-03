@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name</title>
+  <title>Ruchika Sanghi</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,168 +12,174 @@
     }
 
     body {
+      min-height: 100vh;
       font-family: Georgia, "Times New Roman", serif;
-      background: #f7f4ef;
-      color: #1f1c18;
+      background: #f8eeeb;
+      color: #2b1404;
       line-height: 1.6;
     }
 
     header {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 80px 24px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 40px 48px;
+      z-index: 4;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 500;
-      letter-spacing: -0.03em;
     }
 
     .tagline {
-      margin-top: 8px;
-      color: #6b645c;
+      margin-top: 4px;
+      font-size: 1rem;
     }
 
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
+    .menu {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
     }
 
-    section {
-      margin-top: 48px;
+    .item {
+      pointer-events: auto;
+      position: absolute;
+      right: 40px;
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      background: #2b1404;
+      overflow: hidden;
+      cursor: default;
+      transition: width 0.45s ease, background 0.35s ease, height 0.35s ease;
     }
 
-    h2 {
+    .item:nth-child(1) {
+      top: calc(50% - 140px);
+    }
+
+    .item:nth-child(2) {
+      top: calc(50% - 35px);
+    }
+
+    .item:nth-child(3) {
+      top: calc(50% + 70px);
+    }
+
+    .item:hover {
+      width: calc(100vw - 80px);
+      height: auto;
+      min-height: 70px;
+      max-height: 280px;
+      background: #d2b48c;
+      z-index: 3;
+    }
+
+    .item-body {
+      width: calc(100vw - 80px);
+      padding: 18px 36px;
+      opacity: 0;
+      visibility: hidden;
+      color: #2b1404;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .item:hover .item-body {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0.2s;
+    }
+
+    .item h2 {
       font-size: 0.85rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #8a8278;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    p {
-      max-width: 60ch;
+    .item p,
+    .item li {
+      max-width: 70ch;
     }
 
-    a {
-      color: #1f1c18;
-    }
-
-    ul {
+    .item ul {
       list-style: none;
     }
 
-    li + li {
+    .item li + li {
       margin-top: 8px;
     }
 
-    .circles {
-      position: relative;
-      height: 280px;
-      margin: 24px 0 8px;
+    .item a {
+      color: #2b1404;
     }
 
-    .circle {
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 1px solid #1f1c18;
-      background: #efeae3;
-      font: inherit;
-      color: inherit;
-      cursor: pointer;
-      text-align: center;
-      padding: 0 16px;
-      animation: float 5s ease-in-out infinite;
+    .contact {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 28px 48px;
+      z-index: 4;
     }
 
-    .circle:nth-child(1) {
-      left: 8%;
-      top: 40px;
+    .contact p {
+      font-size: 1rem;
     }
 
-    .circle:nth-child(2) {
-      left: calc(50% - 75px);
-      top: 0;
-      animation-delay: -1.6s;
-    }
-
-    .circle:nth-child(3) {
-      right: 8%;
-      top: 56px;
-      animation-delay: -3.2s;
-    }
-
-    .circle.is-active {
-      text-decoration: underline;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
-    }
-
-    .panel {
-      display: none;
-    }
-
-    .panel.is-active {
-      display: block;
+    .contact a {
+      color: #2b1404;
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Ruchika Sanghi</h1>
     <p class="tagline">Student, Programmer, Writer.</p>
   </header>
 
-  <main>
-    <div class="circles">
-      <button class="circle is-active" data-tab="about">About</button>
-      <button class="circle" data-tab="cg">Computer Graphics</button>
-      <button class="circle" data-tab="writing">Writing</button>
-    </div>
+  <nav class="menu">
+    <article class="item">
+      <div class="item-body">
+        <h2>About</h2>
+        <p>
+          Hey! I'm Ruchika, a computer science student at UT Austin with a passion for computer graphics and writing.
+        </p>
+      </div>
+    </article>
 
-    <section id="about" class="panel is-active">
-      <h2>About</h2>
-      <p>
-        Hey! I'm Ruchika, a computer science student at UT Austin with a passion for computer graphics and writing.
-      </p>
-    </section>
+    <article class="item">
+      <div class="item-body">
+        <h2>Computer Graphics</h2>
+        <ul>
+          <li><a href="https://github.com/harinik961/ShadyShaders-ImgToWatercolor.git">Watercolor Shader</a> — As the user presses the mouse, a water drop spread across the image, blurring it to give it a watercolor effect.</li>
+          <li><a href="https://github.com/rsanghi2/acceleration_structures.git">Ray Tracer</a> — A Ray Tracer with reflection and refraction calculations, the Phong illumination model, texture mapping, and antialiasing.</li>
+          <li><a href="https://github.com/harinik961/Project-5-Keyframing-and-Animation-FINAL.git">Animation, Keyframing, and Interactivity</a> - A real-time WebGL skinning engine with interactive ray-casting bone selection, GPU-based linear blend skinning, and keyframe playback with quaternion SLERP interpolation.</li>
+        </ul>
+      </div>
+    </article>
 
-    <section id="cg" class="panel">
-      <h2>Computer Graphics Projects</h2>
-      <ul>
-        <!-- <li><a href="https://www.instagram.com/myhomegrownapp/">HomeGrown</a> — A community-powered marketplace where home gardeners and small-scale farmers can sell directly to neighbors, reducing waste and strengthening local food systems.</li> -->
-        <li><a href="https://github.com/harinik961/ShadyShaders-ImgToWatercolor.git">Watercolor Shader</a> — As the user presses the mouse, a water drop spread across the image, blurring it to give it a watercolor effect.</li>
-        <li><a href="https://github.com/rsanghi2/acceleration_structures.git">Ray Tracer</a> — A Ray Tracer with reflection and refraction calculations, the Phong illumination model, texture mapping, and antialiasing.</li>
-        <li><a href="https://github.com/harinik961/Project-5-Keyframing-and-Animation-FINAL.git">Animation, Keyframing, and Interactivity</a> - A real-time WebGL skinning engine with interactive ray-casting bone selection, GPU-based linear blend skinning, and keyframe playback with quaternion SLERP interpolation.</li>
-      </ul>
-    </section>
-    <section id="writing" class="panel">
-      <h2>Writing</h2>
-      <p>
-        writing tab test
-      </p>
-    </section>
+    <article class="item">
+      <div class="item-body">
+        <h2>Writing</h2>
+        <p>
+          writing tab test
+        </p>
+      </div>
+    </article>
+  </nav>
 
-    <section>
-      <h2>Contact</h2>
-      <p>
-        <a>sanghiruchika@gmail.com</a>
-        ·
-        <a href="https://github.com/rsanghi2">GitHub</a>
-        ·
-        <a href="https://www.linkedin.com/in/ruchika-sanghi-2b1565374">LinkedIn</a>
-      </p>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+  <footer class="contact">
+    <p>
+      contact
+      ·
+      <a>sanghiruchika@gmail.com</a>
+      ·
+      <a href="https://github.com/rsanghi2">GitHub</a>
+      ·
+      <a href="https://www.linkedin.com/in/ruchika-sanghi-2b1565374">LinkedIn</a>
+    </p>
+  </footer>
 </body>
 </html>
