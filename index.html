@@ -11,10 +11,15 @@
       padding: 0;
     }
 
+    html,
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
       font-family: Georgia, "Times New Roman", serif;
       background: #f8eeeb;
       color: #2b1404;
@@ -22,11 +27,8 @@
     }
 
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
       padding: 40px 48px;
-      z-index: 4;
+      background: #f8eeeb;
     }
 
     h1 {
@@ -40,39 +42,46 @@
     }
 
     .menu {
-      flex: 1;
+      --dot: 80px;
+      --gap: 24px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-start;
-      gap: 48px;
-      padding: calc(50vh - 288px) 40px 48px;
+      gap: var(--gap);
+      min-height: 0;
+      overflow: hidden;
+      padding: 8px 40px;
     }
 
     .item {
-      width: 160px;
-      height: 160px;
+      width: var(--dot);
+      height: var(--dot);
+      flex: 0 0 var(--dot);
       border-radius: 50%;
       background: #2b1404;
       overflow: hidden;
-      transition: width 0.45s ease, height 0.45s ease, background 0.35s ease, border-radius 0.35s ease;
+      transition: width 0.45s ease, height 0.45s ease, flex-basis 0.45s ease, background 0.35s ease, border-radius 0.35s ease;
     }
 
     .item:hover {
-      width: calc(100vw - 80px);
+      width: 100%;
       height: auto;
-      min-height: 160px;
-      border-radius: 12px;
+      flex: 0 1 auto;
+      min-height: var(--dot);
+      max-height: calc(100% - (2 * var(--dot)) - (2 * var(--gap)));
+      border-radius: 40px;
       background: #401C00;
+      overflow-y: auto;
     }
 
     .item-body {
-      width: calc(100vw - 80px);
+      width: 100%;
       padding: 28px 40px;
       opacity: 0;
       visibility: hidden;
       color: #fff;
-      text-align: right;
+      text-align: left;
       font-size: 1.25rem;
       transition: opacity 0.2s ease, visibility 0.2s ease;
     }
@@ -83,16 +92,13 @@
       transition-delay: 0.2s;
     }
 
-    .item h2 {
+    .item h2,
+    .contact h2 {
       font-size: 1.35rem;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 10px;
-    }
-
-    .item p,
-    .item li {
-      margin-left: auto;
     }
 
     .item ul {
@@ -110,12 +116,7 @@
     .contact {
       padding: 28px 48px 36px;
       width: fit-content;
-    }
-
-    .contact h2 {
-      font-size: 1.5rem;
-      font-weight: 500;
-      margin-bottom: 10px;
+      background: #f8eeeb;
     }
 
     .contact p {
