@@ -38,7 +38,6 @@
     header {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
     h1 {
@@ -54,7 +53,7 @@
     .contact {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-self: stretch;
       text-align: right;
       width: fit-content;
@@ -87,9 +86,11 @@
     .menu {
       --tab: 80px;
       --gap: 24px;
-      display: flex;
-      align-items: flex-start;
-      gap: var(--gap);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: var(--tab) minmax(0, 1fr);
+      column-gap: var(--gap);
+      row-gap: var(--gap);
       min-height: 0;
       height: 100%;
       overflow: hidden;
@@ -97,61 +98,73 @@
     }
 
     .item {
-      flex: 1;
-      height: var(--tab);
-      padding: 22px 28px;
-      border-radius: 20px;
-      background: #2b1404;
-      color: #fff;
-      overflow: hidden;
-      transition: height 0.55s ease, background 0.35s ease;
-    }
-
-    .item:first-child,
-    .item:hover {
-      height: 100%;
-      background: #401C00;
-      overflow-y: auto;
-    }
-
-    .item:first-child:has(~ .item:hover) {
-      height: var(--tab);
-      background: #2b1404;
-      overflow: hidden;
+      display: contents;
     }
 
     .item h2 {
+      grid-row: 1;
+      display: flex;
+      align-items: center;
+      height: var(--tab);
+      padding: 0 28px;
+      border-radius: 20px;
+      background: #2b1404;
       color: #fff;
       margin-bottom: 0;
+      cursor: default;
+      transition: background 0.35s ease;
     }
+
+    .item:nth-child(1) h2 { grid-column: 1; }
+    .item:nth-child(2) h2 { grid-column: 2; }
+    .item:nth-child(3) h2 { grid-column: 3; }
 
     .item:first-child h2,
-    .item:hover h2 {
-      margin-bottom: 10px;
+    .item:nth-child(2) h2:hover,
+    .item:nth-child(3) h2:hover {
+      background: #401C00;
     }
 
-    .item:first-child:has(~ .item:hover) h2 {
-      margin-bottom: 0;
+    .menu:has(.item:nth-child(2) h2:hover) .item:first-child h2,
+    .menu:has(.item:nth-child(3) h2:hover) .item:first-child h2 {
+      background: #2b1404;
     }
 
     .item-body {
-      opacity: 0;
-      visibility: hidden;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      min-height: 0;
+      padding: 28px 40px;
+      border-radius: 20px;
+      background: #401C00;
       color: #fff;
       text-align: left;
       font-size: 1.25rem;
-      transition: opacity 0.25s ease, visibility 0.25s ease;
-    }
-
-    .item:first-child .item-body,
-    .item:hover .item-body {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .item:first-child:has(~ .item:hover) .item-body {
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
+      overflow: auto;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .item:first-child .item-body {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .menu:has(.item:nth-child(2) h2:hover) .item:first-child .item-body,
+    .menu:has(.item:nth-child(3) h2:hover) .item:first-child .item-body {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .menu:has(.item:nth-child(2) h2:hover) .item:nth-child(2) .item-body,
+    .menu:has(.item:nth-child(3) h2:hover) .item:nth-child(3) .item-body {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .item ul {
