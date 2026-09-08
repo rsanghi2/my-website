@@ -19,7 +19,7 @@
 
     body {
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto minmax(0, 1fr);
       font-family: Georgia, "Times New Roman", serif;
       background: #f8eeeb;
       color: #2b1404;
@@ -29,10 +29,16 @@
     .top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: stretch;
       gap: 48px;
       padding: 40px 48px 28px;
       background: #f8eeeb;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     h1 {
@@ -46,6 +52,10 @@
     }
 
     .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-self: stretch;
       text-align: right;
       width: fit-content;
       margin-left: auto;
@@ -58,6 +68,10 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 10px;
+    }
+
+    .contact h2 {
+      margin-bottom: 0;
     }
 
     .contact p {
@@ -77,26 +91,33 @@
       align-items: flex-start;
       gap: var(--gap);
       min-height: 0;
+      height: 100%;
       overflow: hidden;
-      padding: 0 48px 40px;
+      padding: 0 48px 24px;
     }
 
     .item {
       flex: 1;
       height: var(--tab);
       padding: 22px 28px;
-      border-radius: 0;
+      border-radius: 20px;
       background: #2b1404;
       color: #fff;
       overflow: hidden;
-      transition: height 0.45s ease, background 0.35s ease;
+      transition: height 0.55s ease, background 0.35s ease;
     }
 
+    .item:first-child,
     .item:hover {
-      height: auto;
-      max-height: 100%;
+      height: 100%;
       background: #401C00;
       overflow-y: auto;
+    }
+
+    .item:first-child:has(~ .item:hover) {
+      height: var(--tab);
+      background: #2b1404;
+      overflow: hidden;
     }
 
     .item h2 {
@@ -104,8 +125,13 @@
       margin-bottom: 0;
     }
 
+    .item:first-child h2,
     .item:hover h2 {
       margin-bottom: 10px;
+    }
+
+    .item:first-child:has(~ .item:hover) h2 {
+      margin-bottom: 0;
     }
 
     .item-body {
@@ -114,13 +140,18 @@
       color: #fff;
       text-align: left;
       font-size: 1.25rem;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
     }
 
+    .item:first-child .item-body,
     .item:hover .item-body {
       opacity: 1;
       visibility: visible;
-      transition-delay: 0.15s;
+    }
+
+    .item:first-child:has(~ .item:hover) .item-body {
+      opacity: 0;
+      visibility: hidden;
     }
 
     .item ul {
