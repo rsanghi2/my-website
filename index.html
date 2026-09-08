@@ -48,6 +48,7 @@
 
     .tagline {
       margin-top: 0;
+      margin-left: 1px;
       font-size: 1.4rem;
     }
 
@@ -111,7 +112,7 @@
       border-radius: 20px 20px 0 0;
       background: #2b1404;
       color: #fff;
-      cursor: default;
+      cursor: pointer;
       transition: background 0.35s ease;
     }
 
@@ -119,14 +120,16 @@
     .item:nth-child(2) h2 { grid-column: 2; }
     .item:nth-child(3) h2 { grid-column: 3; }
 
-    .item:first-child h2,
+    .item.is-active h2,
+    .item:nth-child(1) h2:hover,
     .item:nth-child(2) h2:hover,
     .item:nth-child(3) h2:hover {
       background: #401C00;
     }
 
-    .menu:has(.item:nth-child(2) h2:hover) .item:first-child h2,
-    .menu:has(.item:nth-child(3) h2:hover) .item:first-child h2 {
+    .menu:has(.item:nth-child(1) h2:hover) .item.is-active:not(:nth-child(1)) h2,
+    .menu:has(.item:nth-child(2) h2:hover) .item.is-active:not(:nth-child(2)) h2,
+    .menu:has(.item:nth-child(3) h2:hover) .item.is-active:not(:nth-child(3)) h2 {
       background: #2b1404;
     }
 
@@ -145,7 +148,7 @@
       padding: 28px 40px;
       color: #fff;
       text-align: left;
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -153,19 +156,19 @@
       z-index: 1;
     }
 
-    .item:first-child .item-body {
+    .item.is-active .item-body {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
     }
 
-    .menu:has(.item:nth-child(2) h2:hover) .item:first-child .item-body,
-    .menu:has(.item:nth-child(3) h2:hover) .item:first-child .item-body {
+    .menu:has(.item h2:hover) .item.is-active .item-body {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
 
+    .menu:has(.item:nth-child(1) h2:hover) .item:nth-child(1) .item-body,
     .menu:has(.item:nth-child(2) h2:hover) .item:nth-child(2) .item-body,
     .menu:has(.item:nth-child(3) h2:hover) .item:nth-child(3) .item-body {
       opacity: 1;
@@ -206,7 +209,7 @@
   </div>
 
   <nav class="menu">
-    <article class="item">
+    <article class="item is-active">
       <h2>About</h2>
       <div class="item-body">
         <p>
@@ -235,5 +238,16 @@
       </div>
     </article>
   </nav>
+
+  <script>
+    const items = document.querySelectorAll(".item");
+
+    items.forEach((item) => {
+      item.querySelector("h2").addEventListener("click", () => {
+        items.forEach((other) => other.classList.remove("is-active"));
+        item.classList.add("is-active");
+      });
+    });
+  </script>
 </body>
 </html>
