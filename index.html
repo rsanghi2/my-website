@@ -87,6 +87,9 @@
     .menu {
       --tab: 80px;
       --gap: 24px;
+      --rust: #8F4538;
+      --ink: #2F4D63;
+      --olive: #4A5330;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: var(--tab) minmax(0, 1fr);
@@ -110,36 +113,31 @@
       margin: 0;
       padding: 0 28px;
       border-radius: 10px 10px 0 0;
-      background: #2b1404;
       color: #fff;
       cursor: pointer;
       transition: background 0.35s ease;
     }
 
-    .item:nth-child(1) h2 { grid-column: 1; }
-    .item:nth-child(2) h2 { grid-column: 2; }
-    .item:nth-child(3) h2 { grid-column: 3; }
-
-    .item.is-active h2,
-    .item:nth-child(1) h2:hover,
-    .item:nth-child(2) h2:hover,
-    .item:nth-child(3) h2:hover {
-      background: #401C00;
-    }
-
-    .menu:has(.item:nth-child(1) h2:hover) .item.is-active:not(:nth-child(1)) h2,
-    .menu:has(.item:nth-child(2) h2:hover) .item.is-active:not(:nth-child(2)) h2,
-    .menu:has(.item:nth-child(3) h2:hover) .item.is-active:not(:nth-child(3)) h2 {
-      background: #2b1404;
-    }
+    .item:nth-child(1) h2 { grid-column: 1; background: var(--rust); }
+    .item:nth-child(2) h2 { grid-column: 2; background: var(--ink); }
+    .item:nth-child(3) h2 { grid-column: 3; background: var(--olive); }
 
     .menu::after {
       content: "";
       grid-column: 1 / -1;
       grid-row: 2;
-      background: #401C00;
+      background: var(--rust);
       border-radius: 0 0 10px 10px;
+      transition: background 0.35s ease;
     }
+
+    .menu:has(.item:nth-child(1).is-active h2)::after { background: var(--rust); }
+    .menu:has(.item:nth-child(2).is-active h2)::after { background: var(--ink); }
+    .menu:has(.item:nth-child(3).is-active h2)::after { background: var(--olive); }
+
+    .menu:has(.item:nth-child(1) h2:hover)::after { background: var(--rust); }
+    .menu:has(.item:nth-child(2) h2:hover)::after { background: var(--ink); }
+    .menu:has(.item:nth-child(3) h2:hover)::after { background: var(--olive); }
 
     .item-body {
       grid-column: 1 / -1;
