@@ -26,13 +26,28 @@
       line-height: 1.5;
     }
 
+    .bg-berries {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .top,
+    .menu {
+      position: relative;
+      z-index: 1;
+    }
+
     .top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 48px;
       padding: 40px 48px 28px;
-      background: #F7EBEB;
+      background: transparent;
     }
 
     header {
@@ -190,6 +205,39 @@
   </style>
 </head>
 <body>
+  <svg class="bg-berries" aria-hidden="true" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMin slice">
+    <symbol id="strawberry" viewBox="0 0 48 64">
+      <path fill="#C45C54" d="M24 16c11 0 18 8 18 18 0 12-9 22-18 28C15 56 6 46 6 34 6 24 13 16 24 16Z"/>
+      <g fill="#F3D4C8">
+        <ellipse cx="18" cy="28" rx="1.3" ry="2" transform="rotate(-25 18 28)"/>
+        <ellipse cx="28" cy="26" rx="1.3" ry="2" transform="rotate(18 28 26)"/>
+        <ellipse cx="23" cy="34" rx="1.3" ry="2" transform="rotate(-8 23 34)"/>
+        <ellipse cx="15" cy="38" rx="1.2" ry="1.8" transform="rotate(22 15 38)"/>
+        <ellipse cx="31" cy="36" rx="1.2" ry="1.8" transform="rotate(-20 31 36)"/>
+        <ellipse cx="21" cy="44" rx="1.2" ry="1.8" transform="rotate(12 21 44)"/>
+        <ellipse cx="28" cy="46" rx="1.1" ry="1.7" transform="rotate(-16 28 46)"/>
+      </g>
+      <g fill="#3D4F2C" transform="translate(24 18)">
+        <ellipse cx="0" cy="-8" rx="4" ry="9"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" transform="rotate(-55)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" transform="rotate(55)"/>
+        <ellipse cx="0" cy="-7" rx="3.4" ry="8" transform="rotate(-110)"/>
+        <ellipse cx="0" cy="-7" rx="3.4" ry="8" transform="rotate(110)"/>
+      </g>
+      <rect x="23.1" y="1.5" width="1.8" height="9" rx="0.9" fill="#2E3B1D"/>
+    </symbol>
+
+    <g transform="translate(510 28) rotate(-18)" opacity="0.72"><use href="#strawberry" width="54" height="72"/></g>
+    <g transform="translate(620 8) rotate(14)" opacity="0.58"><use href="#strawberry" width="40" height="54"/></g>
+    <g transform="translate(730 42) rotate(-8)" opacity="0.7"><use href="#strawberry" width="50" height="67"/></g>
+    <g transform="translate(850 12) rotate(22)" opacity="0.55"><use href="#strawberry" width="36" height="48"/></g>
+    <g transform="translate(960 36) rotate(-14)" opacity="0.64"><use href="#strawberry" width="46" height="62"/></g>
+    <g transform="translate(430 78) rotate(10)" opacity="0.48"><use href="#strawberry" width="28" height="38"/></g>
+    <g transform="translate(1080 70) rotate(-24)" opacity="0.5"><use href="#strawberry" width="32" height="43"/></g>
+    <g transform="translate(18 780) rotate(16)" opacity="0.42"><use href="#strawberry" width="38" height="51"/></g>
+    <g transform="translate(1520 760) rotate(-12)" opacity="0.4"><use href="#strawberry" width="42" height="56"/></g>
+  </svg>
+
   <div class="top">
     <header>
       <h1>Ruchika Sanghi</h1>
